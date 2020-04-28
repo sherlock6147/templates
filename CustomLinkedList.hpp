@@ -1,7 +1,7 @@
 #include <iostream>
 #include "Node.hpp"
 template <typename T>
-class singleLinklist
+class Linklist
 {
 	private:
 		Node<T> *head,*tail;
@@ -121,7 +121,7 @@ class singleLinklist
 					ptr->location=i;
 				}
 			}
-		}/*
+		}
 		void deleteEnd()
 		{
 			Node <T> *ptr;
@@ -146,7 +146,7 @@ class singleLinklist
 					}
 				}
 			}
-		}*/
+		}
 		//void delete_at(node<T> *start);
 		//void delete_after(node<T> *start);
 		void traverse()

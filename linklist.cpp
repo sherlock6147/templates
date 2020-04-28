@@ -2,7 +2,7 @@
 #include "CustomLinkedList.hpp"
 int main(){
     int choice=0;
-    singleLinklist <int> sll;
+    Linklist <int> sll;
     do
     {
         cout<<"1 to insert-beggining\n";
@@ -45,12 +45,12 @@ int main(){
             {
 				sll.deleteBeg();
                 break;
-			}/*
+			}
             case 6:
             {
                 sll.deleteEnd();
                 break;
-            }*/
+            }
             case 7:
             {
                 sll.traverse();
