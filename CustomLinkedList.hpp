@@ -7,7 +7,7 @@ class Linklist
 		Node<T> *head,*tail;
 		int numElements;
 	public:
-		singleLinklist()
+		Linklist()
 		{
 			head=NULL;
 			tail=NULL;
