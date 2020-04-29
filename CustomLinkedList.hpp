@@ -15,13 +15,10 @@ class Linklist
 		}
 		void insertBeg()
 		{
-			T item;
-			cout<<"enter element: ";
-			cin>>item;
 			++numElements;
 			Node<T> *ptr;
 			ptr=new Node<T>;
-			ptr->data=item;
+			ptr->get_data();
 			ptr->location=1;
 			ptr->display();
 			if (head==NULL)
@@ -41,8 +38,7 @@ class Linklist
 		{
 			Node<T> *ptr;
 			ptr=new Node<T>;
-			cout<<"enter data: ";
-			cin>>ptr->data;
+			ptr->get_data();
 			++numElements;
 			ptr->location=numElements;
 			ptr->display();
@@ -63,8 +59,7 @@ class Linklist
 			int loc=0;
 			ptr=new Node<T>;
 			temp=new Node<T>;
-			cout<<"enter data: ";
-			cin>>ptr->data;
+			ptr->get_data();
 			cout<<"enter location(<="<<numElements<<"): ";
 			cin>>loc;
 			int poc=loc;
@@ -103,8 +98,7 @@ class Linklist
 			Node<T> *ptr,*temp;
 			ptr=new Node<T>;
 			temp=new Node<T>;
-			cout<<"enter data: ";
-			cin>>ptr->data;
+			ptr->get_data();
 			cout<<"enter location(<="<<numElements<<"): ";
 			cin>>ptr->location;
 			temp=head;
@@ -129,7 +123,7 @@ class Linklist
 			{
 				ptr=head;
 				cout<<"deleting:"<<ptr->data<<"\n";
-				cout<<"element info: "<<ptr->data<<" number "<<ptr->location<<'\n';	
+				ptr->display();	
 				--numElements;
 				head=head->next;
 				ptr=head;
@@ -151,7 +145,7 @@ class Linklist
 			{
 				ptr=tail;
 				cout<<"deleting:"<<ptr->data<<"\n";
-				cout<<"element info: "<<ptr->data<<" number "<<ptr->location<<'\n';	
+				ptr->display();	
 				--numElements;
 				ptr=head;
 				for (int i = 1; i <= numElements; i++,ptr=ptr->next)
