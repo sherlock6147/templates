@@ -70,22 +70,28 @@ class Linklist
 			int poc=loc;
 			ptr->location=loc;
 			temp=head;
-			++numElements;
-			for (int i = 1; i <= numElements; i++,temp=temp->next)
+			if (loc==numElements)
 			{
-				if(temp->location==loc)
+				insertEnd();
+			}
+			else
+			{	
+				++numElements;
+				for (int i = 1; i <= numElements; i++,temp=temp->next)
 				{
-					temp->next->location=loc+2;
-					ptr->next=temp->next;
-					temp->next=ptr;
-					temp->next->location=i+1;
-				}
-				else if (temp->location > loc+1)				
-				{
-					ptr->location+=2;
+					if(temp->location==loc)
+					{
+						temp->next->location=loc+2;
+						ptr->next=temp->next;
+						temp->next=ptr;
+						temp->next->location=i+1;
+					}
+					else if (temp->location > loc+1)				
+					{
+						ptr->location+=2;
+					}
 				}
 			}
-			cout<<"\n----"<<loc<<"-----\n";
 			ptr=head;
 			for (int i = 1; i <= numElements; i++,ptr=ptr->next)
 			{
@@ -157,31 +163,50 @@ class Linklist
 					}
 				}
 			}
-		}/*
+		}
 		void deleteAfter()
 		{
-			Node<T> *ptr,*temp;
-			ptr=new Node<T>;
+			Node<T> *temp,*ptr;
+			int loc;
 			temp=new Node<T>;
-			cout<<"enter data: ";
-			cin>>ptr->data;
-			cout<<"enter location(<="<<numElements+1<<"): ";
-			cin>>ptr->location;
-			temp=head;
-			for (int i = 1; i <= numElements; i++,temp=temp->next)
+			ptr=new Node<T>;
+			cout<<"enter location(<"<<numElements<<"): ";
+			cin>>loc;
+			if (loc==numElements)
 			{
-				if(temp->location+1==ptr->location-1)
-				{
-					ptr->next=temp->next;
-					temp->next=ptr;
-				}
-				else if (temp->location+1 > ptr->location)				
-				{
-					++ptr->location;
-				}
+				cout<<"no element after "<<ptr->location<<" for deletion\n";
 			}
-			--numElements;
-		}*/
+			else if (loc==numElements-1)
+			{
+				deleteEnd();
+			}
+			else
+			{	
+				temp=head;
+				for (int i = 1; i <= numElements-1; i++,temp=temp->next)
+				{
+					if(temp->location==loc)
+					{
+						ptr=temp->next;
+						cout<<"deleting \n";
+						ptr->display();
+						temp->next=ptr->next;
+					}
+					else if(temp->location > loc)				
+					{
+						ptr->location=i-1;
+					}
+				}
+				--numElements;
+				temp=head;
+				for (int i = 1; i <= numElements; i++,temp=temp->next)
+				{
+					temp->location=i;
+				}
+				
+			}
+
+		}
 		void traverse()
 		{
 			if(head==NULL)
