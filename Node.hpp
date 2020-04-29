@@ -1,5 +1,6 @@
 #include <iostream>
 #include <stdio.h>
+#include <string.h>
 using namespace std;
 template <typename T>
 class Node
@@ -24,7 +25,7 @@ public:
         cout<<" location :"<<location<<'\n';
     }
 };
-/*
+
 template <typename T=char[]>
 class Node
 {
@@ -39,7 +40,8 @@ public:
     }
     void disp_data()
     {
-        cout<<data;
+        int len=strlen(data);
+        cout.write(data,len);
     }
     void display()
     {
@@ -47,4 +49,4 @@ public:
         disp_data();
         cout<<" location :"<<location<<'\n';
     }
-}; */
+}; 
