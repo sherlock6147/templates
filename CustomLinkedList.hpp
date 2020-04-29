@@ -60,25 +60,36 @@ class Linklist
 		void insertAfter()
 		{
 			Node<T> *ptr,*temp;
+			int loc=0;
 			ptr=new Node<T>;
 			temp=new Node<T>;
 			cout<<"enter data: ";
 			cin>>ptr->data;
-			cout<<"enter location(<="<<numElements+1<<"): ";
-			cin>>ptr->location;
+			cout<<"enter location(<="<<numElements<<"): ";
+			cin>>loc;
+			int poc=loc;
+			ptr->location=loc;
 			temp=head;
 			++numElements;
 			for (int i = 1; i <= numElements; i++,temp=temp->next)
 			{
-				if(temp->location+1==ptr->location-1)
+				if(temp->location==loc)
 				{
+					temp->next->location=loc+2;
 					ptr->next=temp->next;
 					temp->next=ptr;
+					temp->next->location=i+1;
 				}
-				else if (temp->location+1 > ptr->location)				
+				else if (temp->location > loc+1)				
 				{
-					++ptr->location;
+					ptr->location+=2;
 				}
+			}
+			cout<<"\n----"<<loc<<"-----\n";
+			ptr=head;
+			for (int i = 1; i <= numElements; i++,ptr=ptr->next)
+			{
+				ptr->location=i;
 			}
 		}
 		void insertAt()
@@ -88,7 +99,7 @@ class Linklist
 			temp=new Node<T>;
 			cout<<"enter data: ";
 			cin>>ptr->data;
-			cout<<"enter location(<="<<numElements+1<<"): ";
+			cout<<"enter location(<="<<numElements<<"): ";
 			cin>>ptr->location;
 			temp=head;
 			for (int i = 1; i <= numElements; i++,temp=temp->next)
@@ -146,9 +157,31 @@ class Linklist
 					}
 				}
 			}
-		}
-		//void delete_at(node<T> *start);
-		//void delete_after(node<T> *start);
+		}/*
+		void deleteAfter()
+		{
+			Node<T> *ptr,*temp;
+			ptr=new Node<T>;
+			temp=new Node<T>;
+			cout<<"enter data: ";
+			cin>>ptr->data;
+			cout<<"enter location(<="<<numElements+1<<"): ";
+			cin>>ptr->location;
+			temp=head;
+			for (int i = 1; i <= numElements; i++,temp=temp->next)
+			{
+				if(temp->location+1==ptr->location-1)
+				{
+					ptr->next=temp->next;
+					temp->next=ptr;
+				}
+				else if (temp->location+1 > ptr->location)				
+				{
+					++ptr->location;
+				}
+			}
+			--numElements;
+		}*/
 		void traverse()
 		{
 			if(head==NULL)
